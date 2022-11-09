@@ -24,9 +24,9 @@ app.use('/message', messageRoutes)
 
 const __dirname1 = path.resolve(); 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname1, "/frontend/build")))
+  app.use(express.static(path.join(__dirname1, "../frontend/build")))
   app.get('*', (req, res) =>{
-    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname1, "../frontend/build/index.html"))
   })
 }else{
   app.get('/', (req, res) => {
@@ -45,7 +45,7 @@ app.use(errorHandler);
 //   const singleChat = chats.find(item => item._id === req.params.id)
 //   res.send(singleChat)
 // })
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 4000
 const server = app.listen(PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`)
 })
