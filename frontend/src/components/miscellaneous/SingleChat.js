@@ -11,10 +11,11 @@ import ScrollableChat from './ScrollableChat';
 import UpdateGroupChatModal from './UpdateGroupChatModal';
 import {io} from 'socket.io-client'
 import Lottie from 'react-lottie'
-import { SET_USER } from '../../store/auth/authActionTypes';
+// import { SET_USER } from '../../store/auth/authActionTypes';
 import animationData from "../animation/typing.json";
 
 let socket, selectedChatCompare
+const ENDPOINT = 'https://chatt-webb-appp.herokuapp.com/'
 
 const SingleChat = ({fetchAgain, setFetchAgain}) => {
 const { singleChat } = useSingleChat();
@@ -53,7 +54,7 @@ useEffect(() => {
 },[ singleChat[0]])
 
 useEffect(() => {
-   socket= io('https://chatt-webb-appp.herokuapp.com/')
+   socket= io(ENDPOINT)
    socket.emit('setup', JSON.parse(localStorage.getItem('auth-token')))
    socket.on('connected', () => setSocketConnected(true))
    socket.on('typing', () => setIsTyping(true));
