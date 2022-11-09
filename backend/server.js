@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 4000
+// const port = 4000
 const dotenv= require("dotenv")
 // const {chats} = require('./data/data')
 const connectDB = require('./config/db')
@@ -45,8 +45,8 @@ app.use(errorHandler);
 //   const singleChat = chats.find(item => item._id === req.params.id)
 //   res.send(singleChat)
 // })
-
-const server = app.listen(port, () => {
+const PORT = process.env.PORT
+const server = app.listen(PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`)
 })
 
