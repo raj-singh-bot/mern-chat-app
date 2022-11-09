@@ -1,0 +1,1 @@
+export const ADD_SINGLECHAT = 'ADD_SINGLECHAT'
